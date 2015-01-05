@@ -2,6 +2,8 @@
 
 -- What is the largest prime factor of the number 600851475143 ?
 
+module P3 where
+
 divides d n = rem n d == 0
 
 ld :: Integer -> Integer
