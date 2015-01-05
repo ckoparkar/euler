@@ -47,7 +47,5 @@ n = "73167176531330624919225119674426574742355349194934\
      \71636269561882670428252483600823257530420752963450"
 
 pairs = filter (\x -> length x == 13) $ map (take 13) $ tails n
-
-products =  map product $ ((map $ (map (fromIntegral . digitToInt))) pairs)
-
+products =  map product $ (map . map) (fromIntegral . digitToInt) pairs
 m = maximum products
