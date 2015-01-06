@@ -1,3 +1,5 @@
+module P7 where
+
 import P3 (ld)
 
 prime n | n == 1 = False
