@@ -2,6 +2,7 @@
 
 -- Find the sum of all the primes below two million.
 
+module P10 where
 import qualified Data.Map as Map
 
 sieve [] = []
