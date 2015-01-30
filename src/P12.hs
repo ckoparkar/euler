@@ -15,12 +15,13 @@
 
 -- What is the value of the first triangle number to have over five hundred divisors?
 
+module P12 where
 import Data.List
 import P3 (factors)
 
-divisors :: Integer -> Int
-divisors = foldl1 (*) . map ((+ 1) . length) . group . factors
+noOfDivisors :: Integer -> Integer
+noOfDivisors = fromIntegral . foldl1 (*) . map ((+ 1) . length) . group . factors
 
 triangles = 1 : zipWith (+) triangles [2..]
 
-m = head [x | x <- drop 1 triangles, divisors x > 500]
+m = head [x | x <- drop 1 triangles, noOfDivisors x > 500]
