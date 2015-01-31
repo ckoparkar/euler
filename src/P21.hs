@@ -5,6 +5,7 @@
 
 -- Evaluate the sum of all the amicable numbers under 10000.
 
+module P21 where
 import Data.List
 
 properDivisors :: Integer -> [Integer]
@@ -14,12 +15,14 @@ properDivisors n = 1 : factors
         large = map (\x -> n `div` x) (small)
         factors = nub $ small ++ large
 
+sumProperDivisors :: Integer -> Integer
+sumProperDivisors = sum . properDivisors
+
 amicable :: Integer -> Integer
 amicable n
   | m == n = 0
-  | d m == n = n
+  | sumProperDivisors m == n = n
   | otherwise = 0
-  where d n = sum . properDivisors $ n
-        m = d n
+  where m = sumProperDivisors n
 
-m = sum $ map amicable [2..9999]
+m = sum $ map amicable [1..10000]
