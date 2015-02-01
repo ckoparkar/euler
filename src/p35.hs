@@ -7,6 +7,7 @@
 import P10 (primes)
 import P7 (prime)
 import Data.Digits
+import qualified Data.Map as Map
 
 rotate :: Integer -> [Integer]
 rotate n = rotate' (n : []) l d
@@ -20,8 +21,27 @@ rotate' ns len d
   where x = head ns
         y = x `mod` d * 10 + x `div` d
 
-circular :: Integer -> Bool
-circular n = and $ map prime cps
-  where cps = rotate n
+markAllRotations :: Integer -> a -> Map.Map Integer a -> Map.Map Integer a
+markAllRotations n b mp =
+  let rots = rotate n
+      mar [] m = m
+      mar (x:xs) m = mar xs (Map.insert x b m)
+  in mar rots mp
 
-m = length $ filter circular $ takeWhile (< 1000000) primes
+circular' x = and $ map prime (rotate x)
+
+circular :: [Integer] -> Map.Map Integer Bool -> Integer -> Integer
+circular [] table sum = sum
+circular (n:ns) table sum =
+  case Map.lookup n table of
+   Just v ->
+     if v then
+       circular ns table (sum + 1)
+     else
+       circular ns table sum
+   Nothing ->
+     if b then
+       circular ns (markAllRotations n b table) (sum + 1)
+     else
+       circular ns (markAllRotations n b table) sum
+     where b = circular' n
