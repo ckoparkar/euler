@@ -6,6 +6,8 @@
 
 -- Using words.txt (right click and 'Save Link/Target As...'), a 16K text file containing nearly two-thousand common English words, how many are triangle words?
 
+-- Thanks Daniel Silverstone [https://www.youtube.com/watch?v=qbkWTAXD8fM]
+
 module P42 where
 import Data.List.Split
 
