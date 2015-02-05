@@ -6,11 +6,12 @@
 
 -- Using words.txt (right click and 'Save Link/Target As...'), a 16K text file containing nearly two-thousand common English words, how many are triangle words?
 
+module P42 where
 import Data.List.Split
 
-loadWords :: IO [String]
-loadWords = do
-  allWords <- readFile "res/p042_words.txt"
+loadWords :: String -> IO [String]
+loadWords path = do
+  allWords <- readFile path
   let quotedWords = splitOn "," allWords
   return $ map (filter (/= '"')) quotedWords
 
@@ -24,6 +25,6 @@ triangles = triangles' 1
         t x = round $ 0.5 * x * (x+1)
 
 m = do
-  ws <- loadWords
+  ws <- loadWords "res/p042_words.txt"
   let vs = map wordValue ws
   return $ length $ filter (\x -> x == (last (takeWhile (<= x) triangles))) vs
