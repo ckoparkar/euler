@@ -2,10 +2,8 @@
 
 -- What is the largest n-digit pandigital prime that exists?
 
-import P32 (nPandigital)
-import P10 (primes)
-import Data.Digits (digits, unDigits)
+import P7 (prime)
+import Data.Digits (unDigits)
+import Data.List (permutations)
 
-candidates xs = filter (\x -> nPandigital ((fromIntegral . length) x) x) $ map (digits 10) xs
-
-m = last $ map (unDigits 10) $ candidates $ take 1000000 primes
+m = maximum $ filter prime $ map (unDigits 10) $ permutations [1..7]
