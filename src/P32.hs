@@ -9,14 +9,15 @@
 -- Approach:
 -- The first thought was to get Set.difference on [1..9] and digits, but it doesnt consider the numbers containing 0's.
 
+module P32 where
 import Data.Digits (digits)
 import Data.List
 
-pandigital :: [Integer] -> Bool
-pandigital = (== [1..9]) . sort
+nPandigital :: Integer -> [Integer] -> Bool
+nPandigital n xs = (== [1..n]) . sort $ xs
 
 products :: Integral t => t -> t -> [([t], t)]
 products xs ys = [(concat [d x,d y,d (x*y)], x*y) | x <- [1..xs], y <- [1..ys]]
   where d as = digits 10 as
 
-m = sum $ nub $ [p | (digits, p) <- (products 50 2000), pandigital digits]
+m = sum $ nub $ [p | (digits, p) <- (products 50 2000), nPandigital 9 digits]
