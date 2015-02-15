@@ -2,6 +2,7 @@
 
 -- Find the smallest positive integer, x, such that 2x, 3x, 4x, 5x, and 6x, contain the same digits.
 
+module P52 where
 import Data.Digits (digits)
 import Data.List (sort,nub)
 
