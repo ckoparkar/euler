@@ -16,11 +16,8 @@ import Data.Digits (unDigits)
 import Data.List (permutations)
 
 interesting :: [Integer] -> Bool
-interesting xs = and
-                 [unDigits 10 d `mod` b == 0| c <- cs,
-                  let a = fst c,let b = snd c,let d = [xs !! a,xs!!(a+1),xs!!(a+2)]]
+interesting xs =  all x as
   where as = [1..7]
-        bs = take 7 primes
-        cs = zip as bs
+        x a = (unDigits 10 [xs !! a, xs !! (a+1), xs !! (a+2)]) `mod` primes !! (a-1) == 0
 
 m = sum $ map (unDigits 10) $ filter interesting (permutations [0..9])
