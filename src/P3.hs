@@ -3,6 +3,7 @@
 -- What is the largest prime factor of the number 600851475143 ?
 
 module P3 where
+import qualified Data.MemoCombinators as Memo
 
 divides d n = rem n d == 0
 
@@ -15,7 +16,8 @@ ldf k n | divides k n = k
         | otherwise   = ldf (k+1) n
 
 factors :: Integer -> [Integer]
-factors n | n == 1    = []
-          | otherwise = p : factors (div n p) where p = ld n
+factors = Memo.integral factors'
+  where factors' n | n == 1    = []
+                   | otherwise = p : factors (div n p) where p = ld n
 
 m = last $ factors 600851475143

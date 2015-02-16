@@ -12,11 +12,9 @@
 -- Find the first four consecutive integers to have four distinct prime factors. What is the first of these numbers?
 
 import P3 (factors)
-import Data.List (union, nub)
-import qualified Data.MemoCombinators as Memo
+import Data.List (nub)
 
--- allFactors :: Integer -> Int
-allFactors = Memo.integral allFactors'
-  where allFactors' x = map nub [factors x, factors (x+1), factors (x+2), factors (x+3)]
+uniqueFactors :: Integer -> [[Integer]]
+uniqueFactors x = map nub [factors x, factors (x+1), factors (x+2), factors (x+3)]
 
-m = [x | x <- [1..], all ((== 4) . length) (allFactors x)]
+m = head [x | x <- [1..], all ((== 4) . length) (uniqueFactors x)]
