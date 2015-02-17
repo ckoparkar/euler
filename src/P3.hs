@@ -2,9 +2,12 @@
 
 -- What is the largest prime factor of the number 600851475143 ?
 
+-- Running time: 0.01 secs
+
 module P3 where
 import qualified Data.MemoCombinators as Memo
 
+divides :: Integer -> Integer -> Bool
 divides d n = rem n d == 0
 
 ld :: Integer -> Integer

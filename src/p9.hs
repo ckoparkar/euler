@@ -6,6 +6,9 @@
 -- There exists exactly one Pythagorean triplet for which a + b + c = 1000.
 -- Find the product abc.
 
+-- Running time: 0.16 secs
+
+triplets :: [Integer]
 triplets  = [x * y * z |
              x <- [1..1000],
              y <- [1..x],

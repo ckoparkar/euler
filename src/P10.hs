@@ -2,9 +2,12 @@
 
 -- Find the sum of all the primes below two million.
 
+-- Running time: 5.16 secs
+
 module P10 where
 import qualified Data.Map as Map
 
+sieve :: (Ord t, Num t) => [t] -> [t]
 sieve [] = []
 sieve xs = sieve' xs Map.empty
   where
@@ -16,6 +19,7 @@ sieve xs = sieve' xs Map.empty
          where
            reinsert table prime = Map.insertWith (++) (x + prime) [prime] table
 
+primes :: [Integer]
 primes = sieve [2..]
 
 m = sum $ takeWhile (< 2000000) primes

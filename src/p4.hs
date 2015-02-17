@@ -2,7 +2,12 @@
 
 -- Find the largest palindrome made from the product of two 3-digit numbers.
 
+-- Running time: 0.37 secs
+
+ps :: [Integer]
 ps = [x*y | x <- [100..999], y <- [x..999]]
+
+isPalindrome :: Show a => a -> Bool
 isPalindrome x = y == reverse y
   where y = show x
 
