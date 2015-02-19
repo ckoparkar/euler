@@ -7,10 +7,16 @@
 
 -- Find the next triangle number that is also pentagonal and hexagonal.
 
+-- Running time: 0.18 secs.
+
+module P45 where
 import P42 (triangles)
 import  qualified Data.Set as Set
 
+hexagonals :: [Integer]
 hexagonals = [n*(2*n - 1) | n <- [1..]]
+
+pentagonals :: [Integer]
 pentagonals = [(n*(3*n - 1)) `quot` 2 | n <- [1..]]
 
 m = head $ dropWhile (<= 40755) [t | t <- triangles, isPentagonal t, isHexagonal t]
