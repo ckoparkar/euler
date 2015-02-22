@@ -4,6 +4,7 @@
 
 -- (Please note that the palindromic number, in either base, may not include leading zeros.)
 
+module P36 where
 import Data.Digits
 
 palindrome :: Integer -> Integer -> Bool
