@@ -6,10 +6,14 @@
 
 -- NOTE: The first two lines in the file represent the numbers in the example given above.
 
--- Running time: 82.27 secs
+-- Trick: log(a^x) = x * log a
+--        logb > loga if a > b.
+
+-- Running time: 0.02 secs
 
 import Data.List.Split
 
+loadNumberPairs :: String -> IO [([Integer], Integer)]
 loadNumberPairs path = do
   allLines <- readFile path
   let ps = splitOn "\n" allLines                        -- ["1,1", "2,2"]
@@ -18,7 +22,8 @@ loadNumberPairs path = do
       os = zip ns [1..]
   return os
 
+m :: IO Integer
 m = do
   ws <- loadNumberPairs "res/p099_base_exp.txt"
-  let xs = map (\(x, y) -> ((x!!0) ^ (x!!1), y)) ws
+  let xs = map (\(x, y) -> (fromIntegral (x!!1) * log(fromIntegral (x!!0)), y)) ws
   return $ snd $ maximum xs
