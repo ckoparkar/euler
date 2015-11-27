@@ -13,3 +13,15 @@ cabal.config
 *.prof
 *.hp
 *.aux
+
+clj/target
+clj/classes
+clj/checkouts
+clj/pom.xml
+clj/pom.xml.asc
+clj/*.jar
+clj/*.class
+clj/.lein-*
+clj/.nrepl-port
+clj/.hgignore
+clj/.hg/
