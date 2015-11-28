@@ -1,5 +1,5 @@
 (ns clj.p5
-  (use [clj.core :only (lcm)]))
+  (:use [clj.core :only (lcm)]))
 
 (defn soln
   [n]

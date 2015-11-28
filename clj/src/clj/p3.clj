@@ -1,5 +1,5 @@
 (ns clj.p3
-  (use [clj.core :only (prime-factors)]))
+  (:use [clj.core :only (prime-factors)]))
 
 "The prime factors of 13195 are 5, 7, 13 and 29.
 
