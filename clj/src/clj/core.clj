@@ -64,4 +64,10 @@
 (defn prime?
   [n]
   "Returns true if n is prime"
-  (= n (least-prime-factor n)))
+  (if (= n 1)
+    false
+    (= n (least-prime-factor n))))
+
+(def primes
+  "Returns a lazy sequence of primes"
+  (filter prime? (range)))
