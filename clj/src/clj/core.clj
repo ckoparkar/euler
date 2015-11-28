@@ -55,3 +55,8 @@
 (defn lcm
   [a b]
   (/ (* a b) (gcd a b)))
+
+(defn square
+  "Return square of a"
+  [n]
+  (* n n))
