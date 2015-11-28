@@ -60,3 +60,8 @@
   "Return square of a"
   [n]
   (* n n))
+
+(defn prime?
+  [n]
+  "Returns true if n is prime"
+  (= n (least-prime-factor n)))
