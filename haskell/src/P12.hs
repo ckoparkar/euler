@@ -15,6 +15,8 @@
 
 -- What is the value of the first triangle number to have over five hundred divisors?
 
+-- Running time: 6.13 secs
+
 module P12 where
 import Data.List
 import P3 (factors)

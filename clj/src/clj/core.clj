@@ -71,3 +71,17 @@
 (def primes
   "Returns a lazy sequence of primes"
   (filter prime? (range)))
+
+(defn triangle-numbers
+  "Returns lazy sequence of triangle numbers"
+  ([] (triangle-numbers 0 1))
+  ([a b]
+   (cons (+ a b) (lazy-seq (triangle-numbers (+ a b) (inc b))))))
+
+(defn factors
+  "Returns factors of n"
+  [n]
+  (flatten (for [x (range 1 (Math/sqrt n))
+                 :let [y (quot n x)]
+                 :when (zero? (rem n x))]
+             [x y])))
