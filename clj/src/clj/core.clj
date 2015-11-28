@@ -36,3 +36,22 @@
   "Returns list of digits of a int"
   [n]
   (map #(Character/getNumericValue %) (str n)))
+
+(defn abs
+  "(abs n) is the absolute value of n"
+  [n]
+  (cond
+    (neg? n) (- n)
+    :else n))
+
+(defn gcd
+  "(gcd a b) returns the greatest common divisor of a and b"
+  [a b]
+  (loop [a (abs a) b (abs b)]
+    (if (zero? b)
+      a
+      (recur b (mod a b)))))
+
+(defn lcm
+  [a b]
+  (/ (* a b) (gcd a b)))
